@@ -5,6 +5,7 @@ import { faker } from '@faker-js/faker';
 import { ListarVehiculoComponent } from './listar-vehiculo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VehiculoModel } from '../models/vehiculoModel';
+import { By } from '@angular/platform-browser';
 
 describe('ListarVehiculoComponent', () => {
   let component: ListarVehiculoComponent;
@@ -14,16 +15,16 @@ describe('ListarVehiculoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      declarations: [ ListarVehiculoComponent ]
+      declarations: [ListarVehiculoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListarVehiculoComponent);
     component = fixture.componentInstance;
 
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 3; i++) {
       const vehiculo = new VehiculoModel(
         faker.name.firstName(),
         faker.name.firstName(),
@@ -41,4 +42,20 @@ describe('ListarVehiculoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('debe mostrar el nombre  de la pagina', () => {
+    const tituloContenido = fixture.debugElement.nativeElement.querySelector('strong');
+    expect(tituloContenido.textContent).toContain('TuSegundazo.com');
+  });
+
+  it('should have 4 <tr> elements', () => {
+    expect(debug.queryAll(By.css('tr'))).toHaveSize(4)
+  });
+
 });
+
+
+
+
+
+

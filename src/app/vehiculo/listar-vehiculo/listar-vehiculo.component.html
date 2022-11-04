@@ -8,7 +8,7 @@
      <hr class="my-4">
      <table class="table">
       <thead class="thead-dark" style= "background-color: rgb(182, 184, 244);">
-        <tr>
+        <tr >
           <th scope="col">#</th>
           <th scope="col">Marca</th>
           <th scope="col">Linea</th>
@@ -27,9 +27,7 @@
     <ul>
       <li *ngFor="let auto of marcas | keyvalue">
           Total {{auto.key}}: {{auto.value}}
-
       </li>
     </ul>
-
   </div>
 </div>
